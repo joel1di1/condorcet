@@ -1,0 +1,44 @@
+service: condorcet
+
+image: joel1di1/condorcet
+
+servers:
+  web:
+    - 52.47.185.203
+
+# nginx serves public HTTP/HTTPS and proxies condorcet.joel1di1.com to
+# the shared kamal-proxy on localhost:3001. kamal-proxy routes by host.
+proxy:
+  host: condorcet.joel1di1.com
+  app_port: 3000
+  forward_headers: true
+  healthcheck:
+    path: /up
+    timeout: 10
+  run:
+    http_port: 3001
+    https_port: 3443
+    bind_ips:
+      - 127.0.0.1
+
+registry:
+  username: joel1di1
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+env:
+  clear:
+    BASE_URL: https://condorcet.joel1di1.com
+
+ssh:
+  user: ubuntu
+
+aliases:
+  logs: app logs -f
+
+# The SQLite database lives here; never remove this volume.
+volumes:
+  - "condorcet_data:/data"
+
+builder:
+  arch: amd64

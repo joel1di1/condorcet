@@ -1,0 +1,14 @@
+[package]
+name = "condorcet"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.9"
+maud = { version = "0.27.0", features = ["axum"] }
+microlp = "0.6.0"
+rand = "0.10.3"
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+serde = { version = "1.0.229", features = ["derive"] }
+sha2 = "0.11.0"
+tokio = { version = "1.53.2", features = ["full"] }
