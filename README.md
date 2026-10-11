@@ -18,3 +18,7 @@ kamal deploy   # build multi-arch croisé (cargo-zigbuild), image joel1di1/condo
 
 nginx (certbot) sur l'EC2 proxifie `condorcet.joel1di1.com` vers kamal-proxy (127.0.0.1:3001).
 La base SQLite est dans le volume Docker `condorcet_data`.
+
+## Licence
+
+[MIT](LICENSE)
